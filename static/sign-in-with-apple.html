@@ -1,7 +1,12 @@
 <html>
     <script>
         window.onload = function() {
-            // similar behavior as clicking on a link
+            // will be passed by Azure B2C
+            client_id = ""
+            redirect_uri = ""
+            response_type = ""
+            response_mode = ""
+            scope = ""
             window.location.href = "https://appleid.apple.com/auth/authorize?client_id=com.fitpassu.fitpassu.beta.azureb2c&redirect_uri=https://vilacaps.com/.netlify/functions/azure-b2c-sign-in-with-apple-proxy&response_type=code id_token&scope=name email&response_mode=form_post";
         }
     </script>
