@@ -21,9 +21,9 @@ exports.handler = async (event, context, callback) => {
 
   return {
     statusCode: 200,
-    body: {
+    body: JSON.stringify({
       location: 'https://fitpassuprod.b2clogin.com/fitpassuprod.onmicrosoft.com/oauth2/authresp?id_token=' + id_token + '&state=' + state + '&nonce=' + nonce
-    }
+    })
   }
   // const response = {
   //   statusCode: 301,
