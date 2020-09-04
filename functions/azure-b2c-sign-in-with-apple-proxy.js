@@ -19,11 +19,13 @@ exports.handler = async (event, context, callback) => {
     }
   }
 
+  bd = JSON.stringify({
+    location: 'https://fitpassuprod.b2clogin.com/fitpassuprod.onmicrosoft.com/oauth2/authresp?id_token=' + id_token + '&state=' + state + '&nonce=' + nonce
+  });
+  console.log(bd);
   return {
     statusCode: 200,
-    body: JSON.stringify({
-      location: 'https://fitpassuprod.b2clogin.com/fitpassuprod.onmicrosoft.com/oauth2/authresp?id_token=' + id_token + '&state=' + state + '&nonce=' + nonce
-    })
+    body: bd
   }
   // const response = {
   //   statusCode: 301,
