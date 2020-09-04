@@ -1,3 +1,5 @@
+const fetch = require('node-fetch')
+
 exports.handler = async (event, context, callback) => {
     console.log(JSON.stringify(event));
     // return {
