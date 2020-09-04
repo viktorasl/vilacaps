@@ -4,7 +4,8 @@ exports.handler = async (event, context, callback) => {
   return {
     statusCode: 200,
     body: JSON.stringify({
-      "key": "value2"
+      "event": event,
+      "context": context
     })
   };
   // const response = {
