@@ -6,7 +6,6 @@ exports.handler = async (event, context, callback) => {
   let parts = body.split('&')
   var id_token = ""
   var state = ""
-  var nonce = ""
   for (let part of parts) {
     if (part.startsWith('id_token')) {
       id_token = part.split('=')[1];
@@ -14,6 +13,10 @@ exports.handler = async (event, context, callback) => {
     if (part.startsWith('state')) {
       state = part.split('=')[1];
     }
+  }
+  var ref = event['headers']['referer']
+  var nonce = ""
+  for (let part of ref) {
     if (part.startsWith('nonce')) {
       nonce = part.split('=')[1];
     }
@@ -23,16 +26,16 @@ exports.handler = async (event, context, callback) => {
     location: 'https://fitpassuprod.b2clogin.com/fitpassuprod.onmicrosoft.com/oauth2/authresp?id_token=' + id_token + '&state=' + state + '&nonce=' + nonce
   });
   console.log(bd);
-  return {
-    statusCode: 200,
-    body: bd
-  }
-  // const response = {
-  //   statusCode: 301,
-  //   headers: {
-  //     Location: 'https://fitpassuprod.b2clogin.com/fitpassuprod.onmicrosoft.com/oauth2/authresp?id_token=' + id_token,
-  //   }
-  // };
+  // return {
+  //   statusCode: 200,
+  //   body: bd
+  // }
+  const response = {
+    statusCode: 301,
+    headers: {
+      Location: 'https://fitpassuprod.b2clogin.com/fitpassuprod.onmicrosoft.com/oauth2/authresp?id_token=' + id_token,
+    }
+  };
 
-  // return callback(null, response);
+  return callback(null, response);
 };
