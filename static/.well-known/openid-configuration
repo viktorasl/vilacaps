@@ -1,6 +1,6 @@
 {
     "issuer": "https://appleid.apple.com",
     "authorization_endpoint": "https://vilacaps.com/sign-in-with-apple.html",
-    "token_endpoint": "https://vilacaps.com/.netlify/functions/azure-b2c-sign-in-with-apple-proxy",
+    "token_endpoint": "https://appleid.apple.com/auth/token",
     "jwks_uri": "https://appleid.apple.com/auth/keys"
 }
