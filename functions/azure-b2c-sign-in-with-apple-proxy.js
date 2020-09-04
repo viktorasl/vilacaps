@@ -2,7 +2,7 @@ exports.handler = async (event, context, callback) => {
   console.log(JSON.stringify(event));
   console.log(JSON.stringify(context));
   return {
-    statusCode: 200,
+    statusCode: 404,
     body: JSON.stringify({
       "event": event,
       "context": context
