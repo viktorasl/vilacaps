@@ -5,7 +5,7 @@ exports.handler = async (event, context, callback) => {
 
   return await fetch('https://appleid.apple.com/auth/token', {
     method: 'post',
-		body: JSON.stringify(event['body']),
+		body: event['body'],
     headers: {'Content-Type': 'application/x-www-form-urlencoded'} })
     .then(response => response.json())
     .then(data => {
