@@ -6,13 +6,13 @@ exports.handler = async (event, context, callback) => {
   return await fetch('https://appleid.apple.com/auth/token', {
     method: 'post',
 		body: JSON.stringify(event['body']),
-    headers: {'Content-Type': 'application/json'} })
+    headers: {'Content-Type': 'application/x-www-form-urlencoded'} })
     .then(response => response.json())
     .then(data => {
       console.log(JSON.stringify(data))
       return {
         statusCode: 200,
-        body: ""
+        body: event['body']
       }
     })
     .catch(error => ({ statusCode: 422, body: String(error) }));
