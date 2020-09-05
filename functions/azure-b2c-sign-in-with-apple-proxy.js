@@ -1,11 +1,26 @@
-import fetch from "node-fetch";
+const fetch = require('node-fetch');
 
 exports.handler = async (event, context, callback) => {
   console.log(JSON.stringify(event));
-  return {
-    statusCode: 200,
-    body: JSON.stringify({})
-  }
+
+  return await fetch('https://appleid.apple.com/auth/token', {
+    method: 'post',
+		body: JSON.stringify(event['body']),
+    headers: {'Content-Type': 'application/json'} })
+    .then(response => response.json())
+    .then(data => {
+      console.log(JSON.stringify(data))
+      return {
+        statusCode: 200,
+        body: ""
+      }
+    })
+    .catch(error => ({ statusCode: 422, body: String(error) }));
+  // client_id=com.fitpassu.fitpassu.beta.azureb2c&
+  // client_secret=eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiIsImtpZCI6IjVXM0s5UjVTODQifQ.eyJhdWQiOiJodHRwczovL2FwcGxlaWQuYXBwbGUuY29tIiwic3ViIjoiY29tLmZpdHBhc3N1LmZpdHBhc3N1LmJldGEuYXp1cmViMmMiLCJpc3MiOiI2QjM0QVFDWTU1IiwiZXhwIjoxNjAxOTAwMTU3LCJpYXQiOjE1OTkzMDAxNTd9.3Lbh62R3nXbhjDpVmFFzyrd0S2f2NWL9_sp3Hwzxtyw2tZldGjhaGCqhF0nvUYAbeavBO1kh1TLUhWN7Z7hJ7w&
+  // redirect_uri=https%3a%2f%2ffitpassuprod.b2clogin.com%2ffitpassuprod.onmicrosoft.com%2foauth2%2fauthresp&
+  // code=cc21e402966fe4a74a2c170d586d0358a.0.nrstt.hNka32sief2VynO1wAhWsg&
+  // grant_type=authorization_code
 };
 
 // exports.handler = async (event, context, callback) => {
