@@ -12,7 +12,7 @@ exports.handler = async (event, context, callback) => {
       console.log(JSON.stringify(data))
       return {
         statusCode: 200,
-        body: event['body']
+        body: JSON.stringify(data)
       }
     })
     .catch(error => ({ statusCode: 422, body: String(error) }));
