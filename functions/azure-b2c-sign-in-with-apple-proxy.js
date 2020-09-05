@@ -4,11 +4,11 @@ exports.handler = async (event, context, callback) => {
 
   var body = event['body']
   let parts = body.split('&')
-  var id_token = ""
+  var code = ""
   var state = ""
   for (let part of parts) {
-    if (part.startsWith('id_token')) {
-      id_token = part.split('=')[1];
+    if (part.startsWith('code')) {
+      code = part.split('=')[1];
     }
     if (part.startsWith('state')) {
       state = part.split('=')[1];
@@ -22,7 +22,7 @@ exports.handler = async (event, context, callback) => {
     }
   }
 
-  loc = 'https://fitpassuprod.b2clogin.com/fitpassuprod.onmicrosoft.com/oauth2/authresp?id_token=' + id_token + '&state=' + state + '&nonce=' + nonce
+  loc = 'https://fitpassuprod.b2clogin.com/fitpassuprod.onmicrosoft.com/oauth2/authresp?code=' + code + '&state=' + state + '&nonce=' + nonce
   bd = JSON.stringify({
     location: loc
   });
