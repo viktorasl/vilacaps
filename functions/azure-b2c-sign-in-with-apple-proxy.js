@@ -31,17 +31,17 @@ exports.handler = async (event, context, callback) => {
 //   console.log(JSON.stringify(context));
 
 //   var body = event['body']
-//   let parts = body.split('&')
-//   var code = ""
-//   var state = ""
-//   for (let part of parts) {
-//     if (part.startsWith('code')) {
-//       code = part.split('=')[1];
-//     }
-//     if (part.startsWith('state')) {
-//       state = part.split('=')[1];
-//     }
-//   }
+  // let parts = body.split('&')
+  // var code = ""
+  // var state = ""
+  // for (let part of parts) {
+  //   if (part.startsWith('code')) {
+  //     code = part.split('=')[1];
+  //   }
+  //   if (part.startsWith('state')) {
+  //     state = part.split('=')[1];
+  //   }
+  // }
 //   var ref = event['headers']['referer']
 //   var nonce = ""
 //   for (let part of ref) {
@@ -66,5 +66,5 @@ exports.handler = async (event, context, callback) => {
   //   }
   // };
 
-//   return callback(null, response);
+  // return callback(null, response);
 // };
