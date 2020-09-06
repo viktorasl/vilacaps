@@ -30,6 +30,7 @@ exports.handler = async (event, context, callback) => {
     //     },
     //     body: JSON.stringify(body)
     // };
+    console.log(redirect_uri);
 
     return await fetch(redirect_uri, {
         method: 'post',
