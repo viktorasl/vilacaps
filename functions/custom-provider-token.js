@@ -21,36 +21,41 @@ exports.handler = async (event, context, callback) => {
         "id_token" : id_token
     }
     console.log(JSON.stringify(body));
-    const response = {
-        method: 'post',
-        statusCode: 301,
-        headers: {
-            Location: 'https://fitpassuprod.b2clogin.com/fitpassuprod.onmicrosoft.com/oauth2/authresp',
-            'Content-type': 'application/json'
-        },
-        body: JSON.stringify(body)
-    };
-    return callback(null, response);
+    // const response = {
+    //     method: 'post',
+    //     statusCode: 301,
+    //     headers: {
+    //         Location: 'https://fitpassuprod.b2clogin.com/fitpassuprod.onmicrosoft.com/oauth2/authresp',
+    //         'Content-type': 'application/json'
+    //     },
+    //     body: JSON.stringify(body)
+    // };
+    // return callback(null, response);
     // console.log(redirect_uri);
 
-    // return await fetch('https://fitpassuprod.b2clogin.com/fitpassuprod.onmicrosoft.com/oauth2/authresp', {
-    //     method: 'post',
-    //         body: JSON.stringify(body),
-    //         headers: {'Content-Type': 'application/json'} })
-    //     .then(response => response.json())
-    //     .then(data => {
-    //         console.log("data");
-    //         console.log(JSON.stringify(data))
-    //         return {
-    //             statusCode: 200,
-    //             body: JSON.stringify(data)
-    //         }
-    //     })
-    //     .catch(error => {
-    //         console.log("err");
-    //         console.log(error);
-    //         console.log(JSON.stringify(error));
-    //         return { statusCode: 422, body: String(error) }
-    //     });
+    return await fetch('https://fitpassuprod.b2clogin.com/fitpassuprod.onmicrosoft.com/oauth2/authresp', {
+        method: 'post',
+            body: JSON.stringify(body),
+            headers: {'Content-Type': 'application/json'} })
+        .then(response => {
+            console.log('resp');
+            console.log(response);
+            console.log(JSON.stringify(response));
+        })
+        // .then(response => response.json())
+        // .then(data => {
+        //     console.log("data");
+        //     console.log(JSON.stringify(data))
+        //     return {
+        //         statusCode: 200,
+        //         body: JSON.stringify(data)
+        //     }
+        // })
+        .catch(error => {
+            console.log("err");
+            console.log(error);
+            console.log(JSON.stringify(error));
+            return { statusCode: 422, body: String(error) }
+        });
     // // return callback(null, response);
 }
