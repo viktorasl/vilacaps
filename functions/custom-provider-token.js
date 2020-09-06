@@ -19,15 +19,31 @@ exports.handler = async (event, context, callback) => {
         "id_token" : id_token
     }
     console.log(JSON.stringify(body));
-    const response = {
-        method: 'post',
-        statusCode: 301,
-        headers: {
-            Location: redirect_uri,
-            'Content-type': 'application/json'
-        },
-        body: JSON.stringify(body)
-    };
+    // const response = {
+    //     method: 'post',
+    //     statusCode: 301,
+    //     headers: {
+    //         Location: redirect_uri,
+    //         'Content-type': 'application/json'
+    //     },
+    //     body: JSON.stringify(body)
+    // };
 
-    return callback(null, response);
+    return await fetch(redirect_uri, {
+        method: 'post',
+            body: JSON.stringify(body),
+            headers: {'Content-Type': 'application/json'} })
+        .then(response => response.json())
+        .then(data => {
+        console.log(JSON.stringify(data))
+        return {
+            statusCode: 200,
+            body: JSON.stringify(data)
+        }
+        })
+        .catch(error => {
+            console.log(JSON.stringify(error));
+            return { statusCode: 422, body: String(error) }
+        });
+    // return callback(null, response);
 }
