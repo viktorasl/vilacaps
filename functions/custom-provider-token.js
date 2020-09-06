@@ -46,6 +46,7 @@ exports.handler = async (event, context, callback) => {
         })
         .catch(error => {
             console.log("err");
+            console.log(error);
             console.log(JSON.stringify(error));
             return { statusCode: 422, body: String(error) }
         });
