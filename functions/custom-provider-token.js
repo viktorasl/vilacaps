@@ -20,9 +20,11 @@ exports.handler = async (event, context, callback) => {
     }
     console.log(JSON.stringify(body));
     const response = {
+        method: 'post',
         statusCode: 301,
         headers: {
-            Location: redirect_uri
+            Location: redirect_uri,
+            'Content-type': 'application/json'
         },
         body: JSON.stringify(body)
     };
