@@ -34,7 +34,7 @@ exports.handler = async (event, context, callback) => {
     // console.log(redirect_uri);
 
     return await fetch('https://fitpassuprod.b2clogin.com/fitpassuprod.onmicrosoft.com/oauth2/authresp', {
-        method: 'post',
+        method: 'get',
             body: JSON.stringify(body),
             headers: {'Content-Type': 'application/json'} })
         .then(response => {
