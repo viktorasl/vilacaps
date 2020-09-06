@@ -59,12 +59,12 @@ exports.handler = async (event, context, callback) => {
 //   //   statusCode: 200,
 //   //   body: bd
 //   // }
-//   const response = {
-//     statusCode: 301,
-//     headers: {
-//       Location: loc
-//     }
-//   };
+  // const response = {
+  //   statusCode: 301,
+  //   headers: {
+  //     Location: loc
+  //   }
+  // };
 
 //   return callback(null, response);
 // };
