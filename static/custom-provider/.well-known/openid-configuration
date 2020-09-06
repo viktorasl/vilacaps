@@ -1,0 +1,6 @@
+{
+    "issuer": "https://appleid.apple.com",
+    "authorization_endpoint": "https://vilacaps.com/.netlify/functions/custom-provider-authorize",
+    "token_endpoint": "https://vilacaps.com/.netlify/functions/custom-provider-token",
+    "jwks_uri": "https://appleid.apple.com/auth/keys"
+}
