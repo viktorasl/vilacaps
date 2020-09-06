@@ -37,13 +37,15 @@ exports.handler = async (event, context, callback) => {
             headers: {'Content-Type': 'application/json'} })
         .then(response => response.json())
         .then(data => {
-        console.log(JSON.stringify(data))
-        return {
-            statusCode: 200,
-            body: JSON.stringify(data)
-        }
+            console.log("data");
+            console.log(JSON.stringify(data))
+            return {
+                statusCode: 200,
+                body: JSON.stringify(data)
+            }
         })
         .catch(error => {
+            console.log("err");
             console.log(JSON.stringify(error));
             return { statusCode: 422, body: String(error) }
         });
