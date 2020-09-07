@@ -2,5 +2,6 @@
     "issuer": "https://appleid.apple.com",
     "authorization_endpoint": "https://appleid.apple.com/auth/authorize",
     "token_endpoint": "https://appleid.apple.com/auth/token",
-    "jwks_uri": "https://appleid.apple.com/auth/keys"
+    "jwks_uri": "https://appleid.apple.com/auth/keys",
+    "userinfo_endpoint": "https://vilacaps.com/.netlify/functions/apple-user-info"
 }
