@@ -2,10 +2,11 @@ const fetch = require('node-fetch');
 
 exports.handler = async (event, context, callback) => {
     console.log(JSON.stringify(event));
-
+    const body = event['body'];
+    console.log(body);
     return await fetch('https://appleid.apple.com/auth/token', {
-        method: 'post',
-            body: JSON.stringify(event['body']),
+            method: 'post',
+            body: body,
             headers: {'Content-Type': 'application/x-www-form-urlencoded'} })
         .then(response => {
             console.log('resp');
