@@ -2,6 +2,46 @@ const fetch = require('node-fetch');
 
 exports.handler = async (event, context, callback) => {
     console.log(JSON.stringify(event));
+
+    return await fetch('https://appleid.apple.com/auth/token', {
+        method: 'post',
+            body: JSON.stringify(event['body']),
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'} })
+        .then(response => {
+            console.log('resp');
+            console.log(response);
+            console.log(JSON.stringify(response));
+            return response.json()
+        })
+        // .then(response => response.json())
+        .then(data => {
+            console.log("data");
+            console.log(JSON.stringify(data))
+            return {
+                statusCode: 200,
+                body: JSON.stringify(data)
+            }
+        })
+        .catch(error => {
+            console.log("err");
+            console.log(error);
+            console.log(JSON.stringify(error));
+            return { statusCode: 422, body: String(error) }
+        });
+
+    // "body": "client_id=com.fitpassu.fitpassu.beta.azureb2c&client_secret=eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiIsImtpZCI6IjVXM0s5UjVTODQifQ.eyJhdWQiOiJodHRwczovL2FwcGxlaWQuYXBwbGUuY29tIiwic3ViIjoiY29tLmZpdHBhc3N1LmZpdHBhc3N1LmJldGEuYXp1cmViMmMiLCJpc3MiOiI2QjM0QVFDWTU1IiwiZXhwIjoxNjAyMDY0NDM3LCJpYXQiOjE1OTk0NjQ0Mzd9.6aSh-vRqa_u12F2WuA3Wms3iLjDfNSNAIWwOqijgYCkJLBTwrUtTzeKETVuzscl6waNCicJKPbwcbYHuM6bbUA&redirect_uri=https%3a%2f%2ffitpassuprod.b2clogin.com%2ffitpassuprod.onmicrosoft.com%2foauth2%2fauthresp&code=c2f5a2667449e43888b239473469af047.0.nrstt.bTJSKX_Syb3kS8r4CEcUuw&grant_type=authorization_code",
+	// const response = {
+    //     method: 'post',
+    //     statusCode: 301,
+    //     headers: {
+    //         Location: 'https://fitpassuprod.b2clogin.com/fitpassuprod.onmicrosoft.com/oauth2/authresp',
+    //         'Content-type': 'application/json'
+    //     },
+    //     body: JSON.stringify(body)
+    // };
+    // return callback(null, response);
+
+
     // const id_token = "eyJraWQiOiI4NkQ4OEtmIiwiYWxnIjoiUlMyNTYifQ.eyJpc3MiOiJodHRwczovL2FwcGxlaWQuYXBwbGUuY29tIiwiYXVkIjoiY29tLmZpdHBhc3N1LmZpdHBhc3N1LmJldGEuYXp1cmViMmMiLCJleHAiOjE1OTkzOTczMjIsImlhdCI6MTU5OTMxMDkyMiwic3ViIjoiMDAxMjMzLmIzY2NkOTI3YTY0NTRlMDM5ZjQzZWQzMDcyMzY3NzA2LjA4NDYiLCJub25jZSI6ImtGb2RIbjdTZS96SUxwTUd5eWUxQXc9PSIsImF0X2hhc2giOiJ3X242RUNPSFhNclk2VWV2bmcwaVdBIiwiZW1haWwiOiJ2aWt0b3Jhcy5sYXVrZXZpY2l1c0B5YWhvby5jb20iLCJlbWFpbF92ZXJpZmllZCI6InRydWUiLCJhdXRoX3RpbWUiOjE1OTkzMTA5MTksIm5vbmNlX3N1cHBvcnRlZCI6dHJ1ZX0.IvMbW6T3CCl3OfhDMIrr_9yEAv5jtIEK4CqDAmDqE3M_u5jCwhd6dfaBgpvePyzzuf8doqrDIaB2wyKyQRFgAKHTTE5DKP4k_EX85O4cTr3pt8Z5t0RLEqUpJzubxkJpuLWvf1o3LYECJxTjdkpd071B-FJUdnEyJrvWXAPGQkDxXGEQtVkgf4mSlSgzaaWLdRoetUIqcCc35pCG962-JF30OhYNW5G5SWBaQF66u758XCBw--2t7TYJ7Izfg9C5ZHOdEXMD-Ki-Gh8oYWuDaAYO5ogNeHCXzI9Of_p1zJfl2VMf4jhjvlHiF-yJ8n7QzYU6LBMWs4PVdvZ58pb6Yw"
     // const rawBody = event["body"]
     // let parts = rawBody.split('&')
