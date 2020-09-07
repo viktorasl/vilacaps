@@ -2,12 +2,18 @@ const fetch = require('node-fetch');
 
 exports.handler = async (event, context, callback) => {
     console.log(JSON.stringify(event));
-    const body = event['body'];
+    if (event['httpMethod'] != 'POST') {
+        console.log("OK");
+        return {
+            statusCode: 200,
+            body: JSON.stringify({})
+        }
+    }
+    const body = event['body'] + "&" + "client_id=com.fitpassu.fitpassu.beta.azureb2c&client_secret=eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiIsImtpZCI6IjVXM0s5UjVTODQifQ.eyJhdWQiOiJodHRwczovL2FwcGxlaWQuYXBwbGUuY29tIiwic3ViIjoiY29tLmZpdHBhc3N1LmZpdHBhc3N1LmJldGEuYXp1cmViMmMiLCJpc3MiOiI2QjM0QVFDWTU1IiwiZXhwIjoxNjAyMDY0NDM3LCJpYXQiOjE1OTk0NjQ0Mzd9.6aSh-vRqa_u12F2WuA3Wms3iLjDfNSNAIWwOqijgYCkJLBTwrUtTzeKETVuzscl6waNCicJKPbwcbYHuM6bbUA&grant_type=authorization_code&redirect_uri=https://vilacaps.com/.netlify/functions/custom-provider-token"
     console.log(body);
-    const par = "client_id=com.fitpassu.fitpassu.beta.azureb2c&client_secret=eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiIsImtpZCI6IjVXM0s5UjVTODQifQ.eyJhdWQiOiJodHRwczovL2FwcGxlaWQuYXBwbGUuY29tIiwic3ViIjoiY29tLmZpdHBhc3N1LmZpdHBhc3N1LmJldGEuYXp1cmViMmMiLCJpc3MiOiI2QjM0QVFDWTU1IiwiZXhwIjoxNjAyMDY0NDM3LCJpYXQiOjE1OTk0NjQ0Mzd9.6aSh-vRqa_u12F2WuA3Wms3iLjDfNSNAIWwOqijgYCkJLBTwrUtTzeKETVuzscl6waNCicJKPbwcbYHuM6bbUA&grant_type=authorization_code&redirect_uri=https://vilacaps.com"
     return await fetch('https://appleid.apple.com/auth/token', {
             method: 'post',
-            body: body + "&" + par,
+            body: body,
             headers: {'Content-Type': 'application/x-www-form-urlencoded'} })
         .then(response => {
             console.log('resp');
