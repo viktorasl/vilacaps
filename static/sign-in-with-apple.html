@@ -1,31 +1,18 @@
 <html>
+  <head>
+    <title>Sign in with Apple</title>
     <script>
-        window.onload = function() {
-            var body = window.location.search
-            // let parts = body.split('&')
-            // var state = ""
-            // var nonce = ""
-            // var client_id = ""
-            // var redirect_uri = ""
-            // var response_type = ""
-            // var response_mode = ""
-            // var scope = ""
-            // for (let part of parts) {
-            //     if (part.startsWith('state')) {
-            //         state = part.split('=')[1];
-            //     }
-            //     if (part.startsWith('nonce')) {
-            //         nonce = part.split('=')[1];
-            //     }
-            // }
-            const loc = 'https://appleid.apple.com/auth/authorize' + body
-            // alert(loc);
-            window.location.href = loc
-            // will be passed by Azure B2C
-            // window.location.href = "https://appleid.apple.com/auth/authorize?client_id=com.fitpassu.fitpassu.beta.azureb2c&redirect_uri=https://fitpassuprod.b2clogin.com/fitpassuprod.onmicrosoft.com/oauth2/authresp&response_type=code&scope=email&response_mode=form_post&state=" + state + "&nonce=" + nonce;
-        }
+      window.onload = function() {
+        window.location.href = 'https://appleid.apple.com/auth/authorize' + window.location.search
+      }
     </script>
-<body>
+    <style>
+      body {
+        background-color: black;
+      }
+    </style>
+  </head>
+  <body>
     Signing in(6)...
-</body>
+  </body>
 </html>
