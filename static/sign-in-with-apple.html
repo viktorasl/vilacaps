@@ -18,12 +18,14 @@
             //         nonce = part.split('=')[1];
             //     }
             // }
-            window.location.href = "https://appleid.apple.com/auth/authorize?" + body
+            const loc = 'https://appleid.apple.com/auth/authorize?' + body
+            alert(loc);
+            // window.location.href = loc
             // will be passed by Azure B2C
             // window.location.href = "https://appleid.apple.com/auth/authorize?client_id=com.fitpassu.fitpassu.beta.azureb2c&redirect_uri=https://fitpassuprod.b2clogin.com/fitpassuprod.onmicrosoft.com/oauth2/authresp&response_type=code&scope=email&response_mode=form_post&state=" + state + "&nonce=" + nonce;
         }
     </script>
 <body>
-    Signing in(3)...
+    Signing in(4)...
 </body>
 </html>
