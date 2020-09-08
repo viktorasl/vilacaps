@@ -2,31 +2,28 @@
     <script>
         window.onload = function() {
             var body = window.location.href
-            let parts = body.split('&')
-            var state = "DefaultState"
-            var nonce = "DefaultNonce"
-            for (let part of parts) {
-                if (part.startsWith('state')) {
-                    state = part.split('=')[1];
-                }
-                if (part.startsWith('nonce')) {
-                    nonce = part.split('=')[1];
-                }
-            }
-
+            // let parts = body.split('&')
+            // var state = ""
+            // var nonce = ""
+            // var client_id = ""
+            // var redirect_uri = ""
+            // var response_type = ""
+            // var response_mode = ""
+            // var scope = ""
+            // for (let part of parts) {
+            //     if (part.startsWith('state')) {
+            //         state = part.split('=')[1];
+            //     }
+            //     if (part.startsWith('nonce')) {
+            //         nonce = part.split('=')[1];
+            //     }
+            // }
+            window.location.href = "https://appleid.apple.com/auth/authorize?" + body
             // will be passed by Azure B2C
-            client_id = ""
-            redirect_uri = ""
-            response_type = ""
-            response_mode = ""
-            scope = ""
-            // alert(body + ";;" + state + ";;" + nonce);
-            window.location.href = "https://appleid.apple.com/auth/authorize?client_id=com.fitpassu.fitpassu.beta.azureb2c&redirect_uri=https://fitpassuprod.b2clogin.com/fitpassuprod.onmicrosoft.com/oauth2/authresp&response_type=code&scope=email&response_mode=form_post&state=" + state + "&nonce=" + nonce;
-            // window.location.href = "https://appleid.apple.com/auth/authorize?client_id=com.fitpassu.fitpassu.beta.azureb2c&redirect_uri=https://fitpassuprod.b2clogin.com/fitpassuprod.onmicrosoft.com/oauth2/authresp&response_type=code&scope=name email&response_mode=form_post&state=" + state + "&nonce=" + nonce;
-            // window.location.href = "https://www.facebook.com/dialog/oauth?client_id=1039792759786691&redirect_uri=https://vilacaps.com/.netlify/functions/custom-provider-token&response_type=code&scope=email&state=ABCD"
+            // window.location.href = "https://appleid.apple.com/auth/authorize?client_id=com.fitpassu.fitpassu.beta.azureb2c&redirect_uri=https://fitpassuprod.b2clogin.com/fitpassuprod.onmicrosoft.com/oauth2/authresp&response_type=code&scope=email&response_mode=form_post&state=" + state + "&nonce=" + nonce;
         }
     </script>
 <body>
-    Signing in(2)...
+    Signing in(3)...
 </body>
 </html>
